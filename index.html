@@ -52,7 +52,7 @@ h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:20px}
 
 .character-img {
     width: 100%;
-    height: 270px;
+    height: 240px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -86,6 +86,7 @@ header nav a:hover{color:var(--ink)}
 .btn{display:inline-block;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;border:1px solid var(--gold);transition:background .2s,color .2s}
 .btn.primary{background:var(--gold);color:#0f1b1a}
 .btn.primary:hover{background:transparent;color:var(--gold)}
+.btn.ghost{display:inline-block;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;border:1px solid var(--gold);transition:background .2s,color .2s}
 .btn.ghost:hover{background:var(--gold);color:#0f1b1a}
 .scene{position:relative;aspect-ratio:1/1.15;max-width:420px;margin:auto;width:100%}
 .scene svg{width:100%;height:100%;overflow:visible}
@@ -235,9 +236,13 @@ footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem}
   <div class="wrap cols">
     <div>
       <h2>اقتنِ نسختك</h2>
+      <p style="color: var(--muted); margin-bottom: 15px;">اطلب نسختك الورقية أو احصل على النسخة الرقمية مباشرة عبر منصة نظملي.</p>
       <div class="shops">
-        <a class="btn primary" href="#">اطلب النسخة الورقية</a>
-        <a class="btn ghost" href="#">حمّل النسخة الإلكترونية</a>
+        <!-- رابط طلب النسخة الورقية أو الشراء من نظملي -->
+        <a class="btn primary" href="https://nzmly.com/رابط_صفحة_الشراء" target="_blank">🛒 اطلب النسخة الورقية</a>
+        
+        <!-- رابط تحميل النسخة الإلكترونية/الملفات الرقمية من نظملي -->
+        <a class="btn ghost" href="https://nzmly.com/رابط_تحميل_الملفات" target="_blank">📥 حمّل النسخة الإلكترونية (PDF)</a>
       </div>
     </div>
     <div>
@@ -268,26 +273,6 @@ addEventListener('scroll',()=>{
   root.style.setProperty('--sh',Math.min(scrollY/12,45)-10);
 },{passive:true});
 root.style.setProperty('--sh',-10);
-  <section class="get" id="get">
-  <div class="wrap cols">
-    <div>
-      <h2>اقتنِ نسختك</h2>
-      <div class="shops">
-       https://montasser.nzmly.com/
-        <a class="btn primary" href="https://nzmly.com/https://montasser.nzmly.com/" target="_blank">اطلب نسختك الآن عبر نظملي</a>
-      </div>
-    </div>
-    <div>
-      <h2>ابقَ على اطلاع</h2>
-      <p>أرسل بريدك لتصلك أخبار الرواية وموعد الصدور.</p>
-      <form id="form">
-        <input type="email" id="email" placeholder="بmontasser.elkilaany@gmail.com" required aria-label="البريد الإلكتروني">
-        <button class="btn primary" type="submit">اشترك</button>
-      </form>
-      <p id="msg" role="status"></p>
-    </div>
-  </div>
-</section>
 // نموذج الاشتراك
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
