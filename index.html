@@ -268,6 +268,26 @@ addEventListener('scroll',()=>{
   root.style.setProperty('--sh',Math.min(scrollY/12,45)-10);
 },{passive:true});
 root.style.setProperty('--sh',-10);
+  <section class="get" id="get">
+  <div class="wrap cols">
+    <div>
+      <h2>اقتنِ نسختك</h2>
+      <div class="shops">
+        <!-- ضع هنا رابط متجرك أو منتجك المباشر من منصة نظملي -->
+        <a class="btn primary" href="https://nzmly.com/رابط_متجرك_أو_منتجك" target="_blank">اطلب نسختك الآن عبر نظملي</a>
+      </div>
+    </div>
+    <div>
+      <h2>ابقَ على اطلاع</h2>
+      <p>أرسل بريدك لتصلك أخبار الرواية وموعد الصدور.</p>
+      <form id="form">
+        <input type="email" id="email" placeholder="بريدك الإلكتروني" required aria-label="البريد الإلكتروني">
+        <button class="btn primary" type="submit">اشترك</button>
+      </form>
+      <p id="msg" role="status"></p>
+    </div>
+  </div>
+</section>
 // نموذج الاشتراك
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
