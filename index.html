@@ -22,74 +22,52 @@ a{color:inherit}
 .wrap{max-width:1040px;margin:auto;padding:0 24px}
 h1,h2,h3{font-family:"Aref Ruqaa",serif;font-weight:700;line-height:1.4}
 h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:20px}
-          .character-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 155, 15);
-        }  border-color: rgba(212, 175, 155, 1);
+
+/* تنسيق شبكة الشخصيات لتكون صورتين متجاورتين */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* عمودان متساويان لتصبح كل صورتين متجاورتين */
+    gap: 30px;
+    margin-top: 36px;
 }
-          .characters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .character-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .character-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.4);
-        }
 
-        .character-img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
+.character-card {
+    background-color: var(--mist);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
 
-        .character-card h3 {
-            font-size: 1.6rem;
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-        }
+.character-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.4);
+}
 
-        .character-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            text-align: right;
-        }
+.character-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(212, 175, 155, 0.2);
+}
 
-  .character-img {
-            width: 300px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(212, 175, 155, 0.2);
-        }
+.character-card h3 {
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
 
-<div class="images-container">
-    <img src="image1.jpg" alt="Character 1" class="character-img">
-  </div>
+.character-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
 
-  <img src="image2.jpg" alt="Character 2" class="character-img">
-    <div class="images-container">
-    <img src="image3.jpg" alt="Character 3" class="character-img">
-  </div>
-
-  <img src="image4.jpg" alt="Character 4" class="character-img">
-   
-</div>
 /* top bar */
 header{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:linear-gradient(var(--bg),transparent)}
-header nav{display:flex;gap:22px;font-size:.95rem}
+header nav{display:flex;gap:22px;font-size:.95rem;align-items:center}
 header nav a{text-decoration:none;color:var(--muted)}
 header nav a:hover{color:var(--ink)}
 .toggle{font:inherit;font-size:.9rem;background:none;color:var(--ink);border:1px solid var(--muted);border-radius:99px;padding:6px 16px;cursor:pointer}
@@ -124,9 +102,6 @@ section{padding:96px 0}
 .facts span:first-child{color:var(--muted)}
 
 .chars{background:var(--mist);transition:background .6s}
-.chars .list{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:36px}
-.chars h3{font-size:1.7rem;color:var(--gold)}
-.chars p{color:var(--muted)}
 
 .excerpt{text-align:center}
 blockquote{font-family:"Aref Ruqaa",serif;font-size:clamp(1.5rem,3.2vw,2.3rem);line-height:2;max-width:22em;margin:0 auto 18px}
@@ -145,7 +120,7 @@ footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem}
 @media (max-width:820px){
   header nav{display:none}
   .hero,.about,.get .cols{grid-template-columns:1fr}
-  .chars .list{grid-template-columns:1fr;gap:24px}
+  .characters-grid{grid-template-columns:1fr;} /* في الشاشات الصغيرة تصبح صورة واحدة في الصَف ل تناسب الموبايل */
   section{padding:64px 0}
   .scene{max-width:300px}
 }
@@ -155,14 +130,15 @@ footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem}
 <body>
 
 <header>
-  <nav>
-    <a href="#about">عن الرواية</a>
-    <a href="#chars">الشخصيات</a>
-    <a href="#excerpt">مقتطف</a>
-    <a href="#get">اقتنِ نسختك</a>
-  <button class="toggle" id="toggle" aria-pressed="false">العالم الموازي</button>  
-  </nav>
-  
+  <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <nav>
+      <a href="#about">عن الرواية</a>
+      <a href="#chars">الشخصيات</a>
+      <a href="#excerpt">مقتطف</a>
+      <a href="#get">اقتنِ نسختك</a>
+    </nav>
+    <button class="toggle" id="toggle" aria-pressed="false">العالم الموازي</button>
+  </div>
 </header>
 
 <main>
@@ -209,40 +185,37 @@ footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem}
   </div>
 </section>
 
-        <section>
-            <div class="section-header">
-              <div class="character-card">
-
-                <h2>شخصيات الرواية الرئيسية</h2>
+<!-- قسم الشخصيات -->
+<section id="chars" class="chars">
+    <div class="wrap">
+        <h2>شخصيات الرواية الرئيسية</h2>
+        
+        <div class="characters-grid">
+            <div class="character-card">
+                <img src="1.jpg" alt="خالد" class="character-img">
+                <h3>خالد</h3>
+                <p>وصف شخصية خالد هنا...</p>
             </div>
-            <div class="characters-grid">
-                
-                <div class="character-card">
-                    <img src="1.jpg" alt="خالد" class="character-img">
-                    <h3>خالد</h3>
-                    <p></p>
-                </div>
-              
-                <div class="character-card">
-                    <img src="2.jpeg" alt="وسن" class="character-img">
-                    <h3>وسن</h3>
-                    <p></p>
-                </div>
-              
-   <div class="character-card">
-                    <img src="3.png" alt="ماريا" class="character-img">
-                    <h3>ماريا</h3>
-                    <p></p>
-                <div class="character-card">
-                    <img src="4.jpg" alt="نوارا" class="character-img">
-                    <h3>نوارا</h3>
-                    <p></p>
-                </div>
-     
-                <section id="about">
-            <div class="section-header">
-
-  </div>
+          
+            <div class="character-card">
+                <img src="2.jpeg" alt="وسن" class="character-img">
+                <h3>وسن</h3>
+                <p>وصف شخصية وسن هنا...</p>
+            </div>
+          
+            <div class="character-card">
+                <img src="3.png" alt="ماريا" class="character-img">
+                <h3>ماريا</h3>
+                <p>وصف شخصية ماريا هنا...</p>
+            </div>
+            
+            <div class="character-card">
+                <img src="4.jpg" alt="نوارا" class="character-img">
+                <h3>نوارا</h3>
+                <p>وصف شخصية نوارا هنا...</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="excerpt" id="excerpt">
@@ -290,7 +263,7 @@ addEventListener('scroll',()=>{
   root.style.setProperty('--sh',Math.min(scrollY/12,45)-10);
 },{passive:true});
 root.style.setProperty('--sh',-10);
-// نموذج الاشتراك (واجهة فقط؛ اربطه بخدمة بريد فعلية)
+// نموذج الاشتراك
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
   document.getElementById('msg').textContent='تم الاشتراك. شكرًا لك.';
