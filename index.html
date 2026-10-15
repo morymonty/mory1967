@@ -26,7 +26,31 @@ h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:20px}
             transform: translateY(-5px);
             border-color: rgba(212, 175, 155, 15);
         }
+/* الحاوي الأب للصور (تأكد من إضافة هذا الصنف للأب المباشر للصور في HTML) */
+.images-container {
+    display: flex;
+    flex-wrap: wrap; /* للسماح للصور بالانتقال للسطر التالي إذا لزم الأمر */
+    gap: 20px; /* المسافة بين الصور أفقياً وعمودياً */
+    justify-content: space-between; /* توزيع الصور بشكل متناسق */
+}
 
+/* تنسيق الصورة الشخصية */
+.character-img {
+    width: calc(50% - 10px); /* اجعل كل صورة تأخذ نصف العرض ناقص نصف مسافة الفراغ */
+    max-width: 300px;        /* الحد الأقصى للعرض */
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(212, 175, 155, 0.5); /* ملاحظة: قيمة الشفافية alpha يجب أن تكون بين 0 و 1 */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* إضافة سلاسة للحركة */
+}
+
+/* تأثير التمرير (Hover) الذي أرسلته */
+.character-img:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 155, 1);
+}
   .character-img {
             width: 300px;
             height: 240px;
