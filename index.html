@@ -25,32 +25,47 @@ h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:20px}
           .character-card:hover {
             transform: translateY(-5px);
             border-color: rgba(212, 175, 155, 15);
+        }  border-color: rgba(212, 175, 155, 1);
+}
+          .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
-/* الحاوي الأب للصور (تأكد من إضافة هذا الصنف للأب المباشر للصور في HTML) */
-.images-container {
-    display: flex;
-    flex-wrap: wrap; /* للسماح للصور بالانتقال للسطر التالي إذا لزم الأمر */
-    gap: 20px; /* المسافة بين الصور أفقياً وعمودياً */
-    justify-content: space-between; /* توزيع الصور بشكل متناسق */
-}
+        .character-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .character-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
 
-/* تنسيق الصورة الشخصية */
-.character-img {
-    width: calc(50% - 10px); /* اجعل كل صورة تأخذ نصف العرض ناقص نصف مسافة الفراغ */
-    max-width: 300px;        /* الحد الأقصى للعرض */
-    height: 240px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(212, 175, 155, 0.5); /* ملاحظة: قيمة الشفافية alpha يجب أن تكون بين 0 و 1 */
-    transition: transform 0.3s ease, border-color 0.3s ease; /* إضافة سلاسة للحركة */
-}
+        .character-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-/* تأثير التمرير (Hover) الذي أرسلته */
-.character-img:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 175, 155, 1);
-}
+        .character-card h3 {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .character-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
   .character-img {
             width: 300px;
             height: 240px;
